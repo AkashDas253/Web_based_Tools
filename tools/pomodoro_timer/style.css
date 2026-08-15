@@ -1,0 +1,220 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2b2d42;
+    color: #edf2f4;
+}
+
+.pomodoro-container {
+    background-color: #8d99ae;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 380px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #2b2d42;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+    transform: scale(1.1);
+}
+
+.mode-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    background-color: #2b2d42;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    color: #edf2f4;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+}
+
+.mode-btn.active {
+    background-color: #ef233c;
+    font-weight: bold;
+}
+
+.timer-display {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2b2d42;
+}
+
+.session-counter {
+    font-size: 0.9rem;
+    color: #2b2d42;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+
+.controls button {
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#start-btn {
+    background-color: #2b9348;
+    color: white;
+}
+
+#start-btn.pause {
+    background-color: #d90429;
+}
+
+#reset-btn {
+    background-color: #8d99ae;
+    color: #2b2d42;
+    border: 2px solid #2b2d42;
+}
+
+.ambient-controls {
+    border-top: 1px solid rgba(43, 45, 66, 0.2);
+    padding-top: 1rem;
+}
+
+.ambient-btn {
+    background-color: #2b2d42;
+    color: #edf2f4;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.ambient-btn.active {
+    background-color: #4361ee;
+}
+
+.controls button:active, .ambient-btn:active {
+    transform: scale(0.95);
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #edf2f4;
+    color: #2b2d42;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 320px;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+}
+
+.setting-field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.setting-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.setting-field input {
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid #8d99ae;
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#save-settings-btn {
+    background-color: #2b9348;
+    color: white;
+}
+
+#close-settings-btn {
+    background-color: #8d99ae;
+    color: #2b2d42;
+}
