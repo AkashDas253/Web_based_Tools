@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Utility</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Password Security Utility</h1>
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="generator">Generator</button>
+                <button class="tab-btn" data-tab="passphrase">Passphrase</button>
+                <button class="tab-btn" data-tab="bulk">Bulk Generator</button>
+            </nav>
+        </header>
+
+        <main>
+            <div class="display-card">
+                <div class="output-wrapper">
+                    <input type="text" id="password-output" placeholder="Generated Password..." autocomplete="off">
+                    <button id="copy-btn" class="primary-btn">Copy</button>
+                    <button id="refresh-btn" class="icon-btn" title="Regenerate">↻</button>
+                </div>
+
+                <div class="strength-meter">
+                    <div id="strength-bar-fill"></div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric"><span class="label">Strength:</span> <strong id="metric-label">--</strong></div>
+                    <div class="metric"><span class="label">Entropy:</span> <strong id="metric-entropy">0 bits</strong></div>
+                    <div class="metric"><span class="label">Crack Time:</span> <strong id="metric-crack">Instant</strong></div>
+                    <div class="metric"><span class="label">Pwned Status:</span> <strong id="metric-breach">Not Checked</strong></div>
+                </div>
+                <div id="feedback-list" class="feedback-container"></div>
+            </div>
+
+            <section id="tab-generator" class="tab-content active">
+                <div class="control-group">
+                    <label for="char-length">Length: <span id="char-length-val">16</span></label>
+                    <input type="range" id="char-length" min="6" max="128" value="16">
+                </div>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox" id="opt-uppercase" checked> Uppercase (A-Z)</label>
+                    <label><input type="checkbox" id="opt-lowercase" checked> Lowercase (a-z)</label>
+                    <label><input type="checkbox" id="opt-numbers" checked> Numbers (0-9)</label>
+                    <label><input type="checkbox" id="opt-symbols" checked> Symbols (!@#$)</label>
+                    <label><input type="checkbox" id="opt-exclude-ambiguous"> Exclude Ambiguous (0, O, 1, l, I)</label>
+                </div>
+            </section>
+
+            <section id="tab-passphrase" class="tab-content">
+                <div class="control-group">
+                    <label for="word-count">Word Count: <span id="word-count-val">4</span></label>
+                    <input type="range" id="word-count" min="3" max="10" value="4">
+                </div>
+                <div class="control-group">
+                    <label for="separator-select">Separator:</label>
+                    <select id="separator-select">
+                        <option value="-">Hyphen (-)</option>
+                        <option value="_">Underscore (_)</option>
+                        <option value=" ">Space ( )</option>
+                        <option value=".">Period (.)</option>
+                    </select>
+                </div>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox" id="opt-capitalize" checked> Capitalize Words</label>
+                    <label><input type="checkbox" id="opt-include-number" checked> Append Random Number</label>
+                </div>
+            </section>
+
+            <section id="tab-bulk" class="tab-content">
+                <div class="control-group">
+                    <label for="bulk-count">Quantity: <span id="bulk-count-val">5</span></label>
+                    <input type="range" id="bulk-count" min="2" max="20" value="5">
+                </div>
+                <button id="generate-bulk-btn" class="secondary-btn">Generate Bulk Passwords</button>
+                <textarea id="bulk-output" readonly placeholder="Bulk passwords will appear here..."></textarea>
+            </section>
+
+            <section class="history-section">
+                <h3>Session History</h3>
+                <ul id="history-list"></ul>
+                <button id="clear-history-btn" class="text-btn">Clear History</button>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
