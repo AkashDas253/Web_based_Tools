@@ -1,0 +1,82 @@
+{
+  "categories": [
+    {
+      "id": "projects",
+      "title": "🚀 Projects",
+      "subcategories": [
+        {
+          "id": "games",
+          "title": "Games & Simulations",
+          "items": [
+            {
+              "name": "Catch the Ball Game",
+              "description": "Arcade-style browser catching game built with HTML5 Canvas.",
+              "path": "project/catch_the_ball"
+            },
+            {
+              "name": "Swipe Snake",
+              "description": "Classic mobile-friendly snake game with gesture controls.",
+              "path": "project/swipe_snake"
+            }
+          ]
+        },
+        {
+          "id": "utilities",
+          "title": "Utilities & Tools",
+          "items": [
+            {
+              "name": "Weather App",
+              "description": "Real-time forecast checker using external APIs.",
+              "path": "project/weather_app"
+            },
+            {
+              "name": "Financial Calculator Tool",
+              "description": "Modular suite for compound interest, loans, and budgeting.",
+              "path": "project/financial_calculator_tool"
+            },
+            {
+              "name": "Real Time World Clock",
+              "description": "Multi-timezone dashboard with live updates.",
+              "path": "project/real_time_world_clock"
+            },
+            {
+              "name": "Pixel Art Maker",
+              "description": "Grid-based drawing application with color pickers and export tools.",
+              "path": "project/pixel_art_maker"
+            },
+            {
+              "name": "Markdown Viewer",
+              "description": "Live markdown rendering environment with preview support.",
+              "path": "project/markdown_viewer"
+            },
+            {
+              "name": "Shape Shifter",
+              "description": "Dynamic CSS shape and property generator.",
+              "path": "project/shape_shifter"
+            },
+            {
+              "name": "Audio Synthesizer",
+              "description": "Web Audio API interface for sound wave manipulation.",
+              "path": "project/audio_synthesizer"
+            },
+            {
+              "name": "Kanban Board",
+              "description": "Drag-and-drop task management board using local storage.",
+              "path": "project/kanban_board"
+            },
+            {
+              "name": "Pomodoro Timer",
+              "description": "Productivity timer with customizable work/break intervals.",
+              "path": "project/pomodoro_timer"
+            },
+            {
+              "name": "Password Security Utility",
+              "description": "Cryptographic password & passphrase generator with entropy auditing and zero-knowledge breach checking.",
+              "path": "project/password_security_utility"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
