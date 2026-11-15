@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Kanban Board</h1>
+    <div class="actions">
+      <button id="add-task-btn" class="btn primary">+ Add Task</button>
+      <button id="export-btn" class="btn secondary">Export JSON</button>
+      <label for="import-file" class="btn secondary">Import JSON</label>
+      <input type="file" id="import-file" accept=".json" hidden>
+    </div>
+  </header>
+
+  <main id="kanban-board" class="board-container"></main>
+
+  <!-- Task Modal Form for Add / Edit Operations -->
+  <div id="task-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Add New Task</h2>
+        <button id="close-modal-btn" class="close-btn">&times;</button>
+      </div>
+      
+      <form id="task-form">
+        <input type="hidden" id="task-id">
+        
+        <div class="form-group">
+          <label for="task-title-input">Title *</label>
+          <input type="text" id="task-title-input" required placeholder="e.g., Implement drag and drop">
+        </div>
+
+        <div class="form-group">
+          <label for="task-desc-input">Description</label>
+          <textarea id="task-desc-input" rows="3" placeholder="Add task context or implementation details..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-priority-input">Priority</label>
+            <select id="task-priority-input">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-category-input">Tags (comma-separated)</label>
+            <input type="text" id="task-category-input" placeholder="e.g., Feature, UI, Bug">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-status-input">Status Lane</label>
+            <select id="task-status-input">
+              <option value="todo">To Do</option>
+              <option value="in-progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-due-input">Due Date</label>
+            <input type="date" id="task-due-input">
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn" class="btn secondary">Cancel</button>
+          <button type="submit" class="btn primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main ES Module Entry Point -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

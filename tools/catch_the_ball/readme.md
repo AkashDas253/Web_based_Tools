@@ -1,0 +1,68 @@
+
+## Catch the Moving Box 📦
+
+Catch the Moving Box is a simple, skill-based browser game where a box moves randomly on the screen, and the player must click on it quickly to score points within a time limit. The core challenge is the **exponentially increasing speed** of the box.
+
+---
+
+### 🌟 Key Features
+* **Persistent High Score:** Tracks and saves the player's best score using local storage.
+* **Dynamic HTML:** Elements are created and updated in the DOM (Score, Timer, High Score).
+* **CSS Animations:** Provides stylish transitions for the box movement and a crisp **catch animation** (box grows/flashes when clicked).
+* **Modern UI & UX:** Stylish game over modal, flexible buttons, and a responsive design.
+* **Sound Effects:** Toggleable audio feedback for catches.
+
+---
+
+### 🛠️ Robust Game Logic & Advanced Controls
+
+The game incorporates several advanced features for a professional feel:
+
+* **Keyboard Accessibility (A11Y):** The **Spacebar** can be used to **Pause/Resume** the game.
+* **External Configuration:** All tunable game parameters (minimum speed, difficulty constants, colors, etc.) are separated into a **`GAME_CONFIG`** object in `script.js` for easy balancing.
+* **Difficulty Scaling (Exponential):** The speed increase is non-linear, calculated using an exponential decay function. This ensures the game is challenging and scales dynamically:
+    $$\text{Current Speed} = \text{Base Speed} \times e^{-k \times \text{Score}}$$
+    Where $\text{Base Speed}$ is set by the **Difficulty Select**.
+* **Visual Feedback:**
+    * **Miss Indicator:** Clicking outside the moving box triggers a quick red flash on the game area border.
+    * **Catch Indicator:** Clicking the box triggers a yellow flash and grow animation.
+* **Click Handling:** Listens for clicks on the box to score points.
+* **Time Management:** Countdown timer based on user input (30 to 600 seconds).
+* **Game State Management:** Clear separation between Start/End, Pause/Resume, and Reset states.
+
+---
+
+### 📁 Project Structure
+```
+
+catch\_the\_box/
+│
+├── index.html      \# Main HTML structure and element linkage
+├── style.css       \# CSS for styling, animations, responsiveness, and miss feedback
+├── script.js       \# Core JavaScript logic, timers, exponential scaling, and keyboard controls
+├── favicon.ico     \# Browser tab icon (to resolve console errors)
+└── readme.md       \# Project documentation (this file)
+
+```
+
+---
+
+### 🎮 How To Play
+1.  **Settings:** Adjust the **Difficulty** and **Time Limit** as desired (default is 30 seconds on Easy). The difficulty setting determines the starting speed and overall speed curve.
+2.  **Start:** Click the **Start** button to begin the countdown and box movement.
+3.  **Catch:** Click the moving **circular box** to earn 1 point.
+4.  **Pause:** Press the **Spacebar** or the **Pause button** to stop the game and timer. Press it again to resume.
+5.  **Game Over:** When the timer hits zero, the **Game Over modal** appears, showing your score and the option to replay.
+
+---
+
+### 🚀 Installation
+1.  **Download:** Clone or download the project files to your local machine.
+2.  **Navigate:** Open your terminal and navigate to the project directory:
+    ```bash
+    cd project/catch_the_box
+    ```
+3.  **Run with Live Server (Recommended):** To ensure all features, especially **audio playback** and **local storage** persistence, work correctly without browser security errors, use a local server:
+    * Install the **Live Server** extension in VS Code.
+    * Right-click `index.html` and select **"Open with Live Server"**.
+4.  Start playing and enjoy chasing the high score!

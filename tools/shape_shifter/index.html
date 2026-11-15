@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Shifter: Modular Edition</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.bg{fill:%230f172a}.grid{stroke:%23334155;stroke-width:2}.sq{fill:%236366f1}.ci{fill:%2306b6d4}.tr{fill:%23f43f5e}</style><rect class='bg' width='100' height='100' rx='20'/><path class='grid' d='M33 0v100M66 0v100M0 33h100M0 66h100'/><rect class='sq' x='15' y='15' width='22' height='22' rx='4'/><circle class='ci' cx='50' cy='50' r='12'/><polygon class='tr' points='78,68 89,88 67,88'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- HOME & SETTINGS SCREEN -->
+    <div id="home-screen" class="screen active">
+      <header class="title-card">
+        <h1>SHAPE SHIFTER</h1>
+        <p>Adapt. Solve. Survive.</p>
+        <div class="high-score-badge">
+          Best Record: Level <span id="high-score-val">1</span>
+        </div>
+      </header>
+
+      <div class="settings-panel">
+        <h2>Game Settings</h2>
+        
+        <div class="setting-group">
+          <label for="game-mode">Game Mode:</label>
+          <select id="game-mode">
+            <option value="timeless">Timeless (Relaxed / Infinite)</option>
+            <option value="timed" selected>Time Attack (Countdown Timer)</option>
+          </select>
+        </div>
+
+        <!-- 3 VERTICAL TIME BLOCKS + CUSTOM BLOCK -->
+        <div class="setting-group-vertical" id="time-limit-group">
+          <label>Select Time Challenge:</label>
+          <div class="time-block-group">
+            <div class="time-block" data-time="20" data-level="1">
+              <div class="block-info">
+                <span class="block-title">Level 1 - Fast Burst</span>
+                <span class="block-sub">Strict 20s Countdown • High Pressure</span>
+              </div>
+              <span class="block-badge">20s</span>
+            </div>
+
+            <div class="time-block selected" data-time="35" data-level="2">
+              <div class="block-info">
+                <span class="block-title">Level 2 - Standard</span>
+                <span class="block-sub">Balanced 35s • Normal Pace</span>
+              </div>
+              <span class="block-badge">35s</span>
+            </div>
+
+            <div class="time-block" data-time="50" data-level="3">
+              <div class="block-info">
+                <span class="block-title">Level 3 - Generous</span>
+                <span class="block-sub">Extended 50s • Tactical Strategy</span>
+              </div>
+              <span class="block-badge">50s</span>
+            </div>
+
+            <div class="time-block custom-block" data-time="custom" data-level="custom">
+              <div class="block-info">
+                <span class="block-title">Custom Time</span>
+                <span class="block-sub">Set your own limit (seconds)</span>
+              </div>
+              <input type="number" id="custom-time-input" min="5" max="300" value="60" placeholder="60" />
+            </div>
+          </div>
+          <!-- Hidden fallback value for modular script reading -->
+          <input type="hidden" id="time-limit" value="35">
+        </div>
+
+        <div class="setting-group">
+          <label for="grid-size">Maze Size:</label>
+          <select id="grid-size">
+            <option value="11">Small (11x11)</option>
+            <option value="15" selected>Medium (15x15)</option>
+            <option value="19">Large (19x19)</option>
+          </select>
+        </div>
+
+        <div class="setting-group">
+          <label for="difficulty">Difficulty (Obstacle Density):</label>
+          <select id="difficulty">
+            <option value="easy">Easy (Fewer Hazards)</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard (Dense Obstacles)</option>
+          </select>
+        </div>
+
+        <div class="setting-group">
+          <label for="move-speed">Move Delay (ms):</label>
+          <select id="move-speed">
+            <option value="80">Fast (80ms)</option>
+            <option value="120" selected>Normal (120ms)</option>
+            <option value="180">Relaxed (180ms)</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+          <button id="start-btn" class="btn btn-primary">Start New Game</button>
+          <button id="continue-btn" class="btn btn-secondary" style="display: none;">Continue Game</button>
+          <button id="reset-settings-btn" class="btn btn-secondary">Reset Settings</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAY GAME SCREEN -->
+    <div id="game-screen" class="screen">
+      <header id="hud">
+        <div class="hud-item">Level: <span id="level-val">1</span></div>
+        <div class="hud-item">Best: <span id="hud-best-val">1</span></div>
+        <div class="hud-item">Time: <span id="time-val">35</span>s</div>
+        <div class="hud-item">Shape: <span id="shape-val">Square</span></div>
+        <div class="hud-buttons">
+          <button id="pause-btn" class="btn-small">Pause</button>
+          <button id="home-btn" class="btn-small">Main Menu</button>
+        </div>
+      </header>
+
+      <div id="game-container">
+        <div id="maze"></div>
+        <div id="player" class="shape-square"></div>
+        <div id="goal"></div>
+      </div>
+
+      <div id="controls-panel">
+        <div class="shape-controls">
+          <button id="shapeSquare" class="btn active-btn">1: Square (Smash)</button>
+          <button id="shapeCircle" class="btn">2: Circle (Pass Gap)</button>
+          <button id="shapeTriangle" class="btn">3: Triangle (Shield)</button>
+        </div>
+
+        <div class="dpad">
+          <button id="up" class="btn dpad-btn">↑</button>
+          <div class="dpad-row">
+            <button id="left" class="btn dpad-btn">←</button>
+            <button id="down" class="btn dpad-btn">↓</button>
+            <button id="right" class="btn dpad-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-GAME MODAL OVERLAY (PAUSE / VICTORY / GAME OVER) -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+      <div class="modal-card">
+        <h2 id="modal-title">Level Complete!</h2>
+        <p id="modal-message">Prepare for the next challenge.</p>
+        <div class="modal-actions">
+          <button id="modal-primary-btn" class="btn btn-primary">Continue</button>
+          <button id="modal-home-btn" class="btn btn-secondary">Main Menu</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
