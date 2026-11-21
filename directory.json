@@ -1,3 +1,4 @@
+
 {
   "categories": [
     {
@@ -17,6 +18,11 @@
               "name": "Swipe Snake",
               "description": "Classic mobile-friendly snake game with gesture controls.",
               "path": "project/swipe_snake"
+            },
+            {
+              "name": "Tetris",
+              "description": "Classic browser-based Tetris game with keyboard and touch controls, scoring, levels and responsive gameplay.",
+              "path": "project/tetris"
             }
           ]
         },
@@ -73,6 +79,11 @@
               "name": "Password Security Utility",
               "description": "Cryptographic password & passphrase generator with entropy auditing and zero-knowledge breach checking.",
               "path": "project/password_security_utility"
+            },
+            {
+              "name": "QR Code Studio",
+              "description": "Browser-based QR code and barcode generator, scanner, batch processor and local history manager.",
+              "path": "project/qr_code_studio"
             }
           ]
         }
