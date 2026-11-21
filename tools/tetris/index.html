@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">CLASSIC ARCADE</p>
+        <h1>Tetris</h1>
+      </div>
+    </header>
+
+    <section class="game-layout" aria-label="Tetris game">
+      <div class="board-wrap">
+        <canvas id="game" width="300" height="600" aria-label="Tetris playfield"></canvas>
+        <div id="overlay" class="overlay">
+          <div class="overlay-card">
+            <p class="eyebrow">READY?</p>
+            <h2 id="overlay-title">Tetris</h2>
+            <p id="overlay-message">Clear lines. Keep stacking.</p>
+            <button id="start-button" class="primary-button" type="button">Start game</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="stat-grid">
+          <div class="stat"><span>Score</span><strong id="score">0</strong></div>
+          <div class="stat"><span>Best</span><strong id="best">0</strong></div>
+          <div class="stat"><span>Level</span><strong id="level">1</strong></div>
+          <div class="stat"><span>Lines</span><strong id="lines">0</strong></div>
+        </div>
+        <section class="panel next-panel">
+          <h2>Next</h2>
+          <canvas id="next" width="120" height="120" aria-label="Next piece"></canvas>
+        </section>
+        <section class="panel help-panel">
+          <h2>Controls</h2>
+          <p><kbd>←</kbd> <kbd>→</kbd> Move</p>
+          <p><kbd>↓</kbd> Soft drop</p>
+          <p><kbd>↑</kbd> / <kbd>X</kbd> Rotate</p>
+          <p><kbd>Z</kbd> Rotate back</p>
+          <p><kbd>Space</kbd> Hard drop</p>
+          <p><kbd>P</kbd> Pause</p>
+        </section>
+        <button id="pause-button" class="secondary-button" type="button" disabled>Pause</button>
+        <button id="restart-button" class="text-button" type="button">Restart game</button>
+      </aside>
+    </section>
+
+    <section class="touch-controls" aria-label="Touch controls">
+      <div class="touch-row">
+        <button data-action="left" aria-label="Move left">←</button>
+        <button data-action="rotate" aria-label="Rotate">↻</button>
+        <button data-action="right" aria-label="Move right">→</button>
+      </div>
+      <div class="touch-row">
+        <button data-action="down" aria-label="Soft drop">↓</button>
+        <button data-action="drop" aria-label="Hard drop" class="drop-button">DROP</button>
+      </div>
+    </section>
+    <footer>Built with HTML, CSS and JavaScript. No dependencies.</footer>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
