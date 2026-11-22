@@ -23,6 +23,11 @@
               "name": "Tetris",
               "description": "Classic browser-based Tetris game with keyboard and touch controls, scoring, levels and responsive gameplay.",
               "path": "project/tetris"
+            },
+            {
+              "name": "Minesweeper",
+              "description": "Classic browser-based mine-clearing puzzle with multiple difficulty levels, first-click safety, flagging, timer, best times and responsive controls.",
+              "path": "project/minesweeper"
             }
           ]
         },

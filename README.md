@@ -4,38 +4,39 @@ A collection of useful web-based tools and interactive applications that run dir
 
 ## Games & Entertainment
 
-- [Catch the Ball](./tools/catch_the_ball/)
-- [Swipe Snake](./tools/swipe_snake/)
-- [Tetris](./tools/tetris/)
+- [Catch the Ball](./project/catch_the_ball/)
+- [Swipe Snake](./project/swipe_snake/)
+- [Tetris](./project/tetris/)
+- [Minesweeper](./project/minesweeper/)
 
 ## Weather & Time
 
-- [Weather App](./tools/weather_app/)
-- [Real Time World Clock](./tools/real_time_world_clock/)
+- [Weather App](./project/weather_app/)
+- [Real Time World Clock](./project/real_time_world_clock/)
 
 ## Finance & Calculators
 
-- [Financial Calculator Tool](./tools/financial_calculator_tool/)
+- [Financial Calculator Tool](./project/financial_calculator_tool/)
 
 ## Creative & Design
 
-- [Pixel Art Maker](./tools/pixel_art_maker/)
-- [Shape Shifter](./tools/shape_shifter/)
-- [Audio Synthesizer](./tools/audio_synthesizer/)
+- [Pixel Art Maker](./project/pixel_art_maker/)
+- [Shape Shifter](./project/shape_shifter/)
+- [Audio Synthesizer](./project/audio_synthesizer/)
 
 ## Developer & Text Tools
 
-- [Markdown Viewer](./tools/markdown_viewer/)
+- [Markdown Viewer](./project/markdown_viewer/)
 
 ## Productivity & Organization
 
-- [Kanban Board](./tools/kanban_board/)
-- [Pomodoro Timer](./tools/pomodoro_timer/)
+- [Kanban Board](./project/kanban_board/)
+- [Pomodoro Timer](./project/pomodoro_timer/)
 
 ## Security & Privacy
 
-- [Password Security Utility](./tools/password_security_utility/)
+- [Password Security Utility](./project/password_security_utility/)
 
 ## Utilities & Tools
 
-- [QR Code Studio](./tools/qr_code_studio/)
+- [QR Code Studio](./project/qr_code_studio/)
