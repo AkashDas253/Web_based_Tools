@@ -1,0 +1,31 @@
+@media (max-width: 900px) {
+  .game-layout { grid-template-columns: 1fr; gap: 30px; }
+  .game-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .intro { grid-row: span 2; }
+  .intro h1 { font-size: 43px; }
+  .intro-copy { margin-top: 10px; }
+  .control-card { grid-column: 2; }
+  .stats-grid { grid-column: 2; grid-row: 2; }
+  .status-card, .sidebar-footer { grid-column: 1 / -1; }
+  .board { width: min(100%, 760px); }
+}
+@media (max-width: 560px) {
+  .app-shell { padding: 17px 13px 18px; }
+  .topbar { margin-bottom: 28px; }
+  .game-sidebar { display: flex; gap: 13px; }
+  .intro h1 { font-size: 40px; }
+  .intro-copy { max-width: 330px; }
+  .control-card { padding: 14px; }
+  .stats-grid { width: 100%; }
+  .board-toolbar { align-items: flex-end; }
+  .board-toolbar h2 { font-size: 20px; }
+  .board-tools { display: none; }
+  .board-frame { padding: 8px; border-radius: 13px; }
+  .board { gap: 3px; width: max-content; min-width: 100%; }
+  .board[data-size="small"] { width: min(100%, 520px); grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
+  .board[data-size="large"] { min-width: 620px; }
+  .cell { min-width: 27px; border-radius: 5px; font-size: 12px; }
+  .mobile-actions { display: flex; }
+  .board-instructions { font-size: 9px; }
+  .page-footer { gap: 8px; align-items: flex-start; flex-direction: column; margin-top: 30px; }
+}
