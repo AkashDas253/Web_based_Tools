@@ -89,6 +89,11 @@
               "name": "QR Code Studio",
               "description": "Browser-based QR code and barcode generator, scanner, batch processor and local history manager.",
               "path": "project/qr_code_studio"
+            },
+            {
+              "name": "Web Development Utilities",
+              "description": "Browser-based collection of web development tools for color, CSS, data encoding, text processing, code formatting, and conversion, with local processing and no external requests.",
+              "path": "project/web_development_utilities"
             }
           ]
         }

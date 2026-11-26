@@ -40,3 +40,4 @@ A collection of useful web-based tools and interactive applications that run dir
 ## Utilities & Tools
 
 - [QR Code Studio](./project/qr_code_studio/)
+- [Web Development Utilities](./project/web_development_utilities/)
