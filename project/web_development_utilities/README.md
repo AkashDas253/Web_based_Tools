@@ -41,7 +41,7 @@ A browser-based collection of web development utilities. All processing runs loc
 | Diff Checker | Side-by-side line and word comparison, change highlighting |
 | Case and Text Converter | Case conversion, sorting, deduplication, reversal and statistics |
 | Lorem Ipsum Generator | Paragraph, sentence and word generation |
-| Markdown Editor | Live preview, formatting toolbar, HTML/Markdown export |
+| Markdown Editor | Live preview, GFM, formatting toolbar, mathematical expressions, Mermaid diagrams, syntax highlighting, HTML/Markdown export |
 | Regex Tester | Match highlighting, capture groups, flags and replacement preview |
 
 ### Formatters and Minifiers
@@ -87,6 +87,7 @@ web-dev-util/
 │   │   ├── tool-view.js
 │   │   └── one component per tool
 │   └── tools/
+│       ├── vendor.js
 │       └── one logic module per tool
 └── vendor/
     ├── js-beautify/
@@ -94,18 +95,21 @@ web-dev-util/
     ├── csso/
     ├── html-minifier-terser/
     ├── marked/
-    └── dompurify/
+    ├── dompurify/
+    ├── katex/
+    ├── mermaid/
+    └── highlightjs/
 ```
 
 ## Architecture
 
-- **app.js:** Maintains the tool registry and shared application interface, including state, storage and notifications.
-- **ui.js:** Handles navigation, hash-based routing, component lifecycle, themes and data import/export.
-- **components/:** Contains tool interfaces. Components export `mount(container, app)` and `unmount()`. Standard tools use the shared `createToolView` configuration.
-- **tools/:** Contains tool logic, separated from DOM manipulation.
-- **storage.js:** Centralizes localStorage access. All storage keys use the `web-dev-util:` prefix.
-- **vendor/:** Contains locally stored third-party libraries.
-- **tools/vendor.js:** Loads vendored libraries on demand and reports missing dependencies.
+- **`app.js`:** Maintains the tool registry and shared application interface, including state, storage and notifications.
+- **`ui.js`:** Handles navigation, hash-based routing, component lifecycle, themes and data import/export.
+- **`components/`:** Contains tool interfaces. Components export `mount(container, app)` and `unmount()`. Standard tools use the shared `createToolView` configuration.
+- **`tools/`:** Contains tool logic, separated from DOM manipulation.
+- **`storage.js`:** Centralizes localStorage access. All storage keys use the `web-dev-util:` prefix.
+- **`vendor/`:** Contains locally stored third-party libraries.
+- **`tools/vendor.js`:** Loads vendored libraries on demand and reports missing dependencies.
 
 ## Running Locally
 
@@ -126,7 +130,7 @@ The project can also be deployed directly to GitHub Pages.
 
 ## Vendor Dependencies
 
-Six third-party libraries are included in `vendor/`. They are required only by the relevant formatting, minification and Markdown tools. Other tools work independently of these libraries.
+Nine third-party libraries are included in `vendor/`. They are required only by the relevant formatting, minification and Markdown tools. Other tools work independently of these libraries.
 
 | Library | Version | License | Purpose |
 |---|---:|---|---|
@@ -136,6 +140,9 @@ Six third-party libraries are included in `vendor/`. They are required only by t
 | html-minifier-terser | 7.2.0 | MIT | HTML minification |
 | marked | 18.2.0 | MIT | Markdown parsing |
 | DOMPurify | 3.4.17 | MPL-2.0 / Apache-2.0 | HTML sanitization |
+| KaTeX | Verify installed version | Verify license | Mathematical expression rendering |
+| Mermaid | Verify installed version | Verify license | Diagram rendering |
+| Highlight.js | Verify installed version | Verify license | Code syntax highlighting |
 
 Dependencies are stored locally, pinned to exact versions and loaded on demand. Missing libraries affect only the tools that require them.
 
@@ -159,6 +166,7 @@ Download commands, file paths, SHA-256 checksums, license files and update instr
 - XML formatting checks well-formedness only. It does not validate DTDs or schemas or resolve entities.
 - XML mixed content may be reformatted onto separate lines.
 - Markdown preview sanitizes raw HTML, removing scripts and event handlers.
+- Downloaded Markdown HTML embeds its stylesheets and font assets for standalone viewing.
 - Formatting, minification and Markdown tools require their corresponding files in `vendor/`.
 
 ## Planned Additions

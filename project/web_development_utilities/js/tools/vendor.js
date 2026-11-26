@@ -1,10 +1,15 @@
+
 const LIBS = {
   beautifier: { file: "js-beautify/beautifier.min.js", type: "script", global: "beautifier", ready: "html" },
   terser: { file: "terser/bundle.min.js", type: "script", global: "Terser", ready: "minify" },
-  htmlminifier: { file: "html-minifier-terser/htmlminifier.umd.bundle.min.js", type: "script", global: "HTMLMinifier", ready: "minify" },
+  htmlminifier: { file: "html-minifier-terser/html-minifier-terser.umd.bundle.min.js", type: "script", global: "HTMLMinifier", ready: "minify" },
   csso: { file: "csso/csso.esm.js", type: "module" },
   marked: { file: "marked/marked.esm.js", type: "module" },
   dompurify: { file: "dompurify/purify.es.js", type: "module", pick: "default" },
+  katex: { file: "katex/katex.min.js", type: "script", global: "katex", ready: "render" },
+  katexAutoRender: { file: "katex/contrib/auto-render.min.js", type: "script", global: "renderMathInElement" },
+  mermaid: { file: "mermaid/mermaid.esm.min.mjs", type: "module", pick: "default" },
+  highlightjs: { file: "highlightjs/highlight.min.js", type: "script", global: "hljs", ready: "highlightElement" },
 };
 
 const cache = new Map();
@@ -22,11 +27,18 @@ function loadScript(src) {
 
 async function load(lib) {
   if (lib.type === "script") {
-    const ready = () => globalThis[lib.global] && typeof globalThis[lib.global][lib.ready] === "function";
+    const ready = () => {
+      const value = globalThis[lib.global];
+      return lib.ready
+        ? value && typeof value[lib.ready] === "function"
+        : typeof value === "function";
+    };
+
     if (!ready()) await loadScript(href(lib.file));
     if (!ready()) throw new Error("library did not initialize");
     return globalThis[lib.global];
   }
+
   const mod = await import(href(lib.file));
   return lib.pick ? mod[lib.pick] : mod;
 }
